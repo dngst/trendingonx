@@ -8,6 +8,10 @@ class Topic < ApplicationRecord
 
   friendly_id :title, use: :slugged
 
+  def should_generate_new_friendly_id?
+    title_changed? || super
+  end
+
   def extract_tweet_id_from_url(tweet_url)
     match_data = tweet_url.match(%r{twitter\.com/\w+/status/(\d+)})
 
