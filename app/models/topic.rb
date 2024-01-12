@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 class Topic < ApplicationRecord
+  extend FriendlyId
+
   belongs_to :user
   validates :title, :hashtag, :x_link, presence: true
+
+  friendly_id :title, use: :slugged
 
   def extract_tweet_id_from_url(tweet_url)
     match_data = tweet_url.match(%r{twitter\.com/\w+/status/(\d+)})
