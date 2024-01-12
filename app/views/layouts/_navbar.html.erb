@@ -20,6 +20,8 @@
             <%= image_tag "bx-log-out-circle.svg", alt: "Downvote", class: "w-8", draggable:false %>
           <% end %>
         <% end %>
+      <% else %>
+        <%= link_to "Join", new_user_registration_path %>
       <% end %>
     </div>
 
