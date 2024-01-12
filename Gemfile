@@ -52,6 +52,7 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
+  gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 6.1.0'
 end
 
@@ -60,12 +61,22 @@ group :development do
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
+  gem 'rack-mini-profiler'
 
+  gem 'annotate'
+  gem 'rubocop-factory_bot', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'spring'
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 6.0'
+end
+
 gem 'devise', '~> 4.9'
+
+gem 'friendly_id', '~> 5.5'
+
+gem 'httparty', '~> 0.21.0'
