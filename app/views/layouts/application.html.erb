@@ -9,7 +9,11 @@
 
     <%= render "layouts/confirm_modal" %>
 
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto mt-28 px-5 flex flex-col">
+      <div>
+        <%= render "layouts/flash" %>
+      </div>
+
       <%= yield %>
     </main>
   </body>

@@ -1,29 +1,32 @@
 <%= form_with(model: topic, class: "contents") do |form| %>
-  <% if topic.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
-
-      <ul>
-        <% topic.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="my-5">
     <%= form.label :title %>
     <%= form.text_field :title, placeholder: "Topic title", class: "block shadow rounded-md border border-gray-200 outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
+    <% if topic.errors.include?(:title) %>
+      <% topic.errors.full_messages_for(:title).each do |error| %>
+        <%= render "layouts/form_error", error: error %>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="my-5">
     <%= form.label :x_link %>
     <%= form.text_field :x_link, placeholder: "Link to relevant X post", class: "block shadow rounded-md border border-gray-200 focus:border-black focus:ring-black outline-none px-3 py-2 mt-2 w-full" %>
+    <% if topic.errors.include?(:x_link) %>
+      <% topic.errors.full_messages_for(:x_link).each do |error| %>
+        <%= render "layouts/form_error", error: error %>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="my-5">
     <%= form.label :hashtag %>
     <%= form.text_field :hashtag, placeholder: "Hashtag without '#'", class: "block shadow rounded-md border border-gray-200 focus:border-black focus:ring-black outline-none px-3 py-2 mt-2 w-full" %>
+    <% if topic.errors.include?(:hashtag) %>
+      <% topic.errors.full_messages_for(:hashtag).each do |error| %>
+        <%= render "layouts/form_error", error: error %>
+      <% end %>
+    <% end %>
   </div>
 
   <%= form.hidden_field :user_id, value: current_user.id %>
