@@ -1,8 +1,8 @@
-<div class="mx-auto md:w-2/3 w-full">
+<div class="mx-auto md:w-2/3 w-full w-full max-w-md">
   <h1 class="font-bold text-4xl">Editing topic</h1>
 
   <%= render "form", topic: @topic %>
 
-  <%= link_to "View topic", @topic, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to topics", topics_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "View topic", @topic, class: "ml-2 py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "Back to topics", topics_path, class: "ml-2 py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>

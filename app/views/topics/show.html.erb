@@ -4,12 +4,12 @@
 
     <% if user_signed_in? %>
       <% if user_topics(@topic) %>
-        <%= link_to "Edit topic", edit_topic_path(@topic), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Edit topic", edit_topic_path(@topic), class: "mt-2 py-3 px-5 bg-gray-100 inline-block font-medium" %>
         <div class="inline-block ml-2">
-          <%= button_to "Delete topic", topic_path(@topic), method: :delete, data: { turbo_confirm: "Delete topic?" }, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+          <%= button_to "Delete topic", topic_path(@topic), method: :delete, data: { turbo_confirm: "Delete topic?" }, class: "mt-2 py-3 px-5 bg-gray-100 font-medium" %>
         </div>
       <% end %>
-      <%= link_to "Downvote", topics_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to "Downvote", topics_path, class: "ml-2 py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <% end %>
   </div>
 </div>

@@ -16,12 +16,12 @@
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "View topic", topic, class: "rounded-lg py-2 px-4 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "View topic", topic, class: "py-2 px-4 bg-gray-100 inline-block font-medium" %>
     <% if user_signed_in? %>
       <% if user_topics(topic) %>
-        <%= link_to "Edit topic", edit_topic_path(topic), class: "rounded-lg py-2 ml-2 px-4 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Edit topic", edit_topic_path(topic), class: "py-2 ml-2 px-4 bg-gray-100 inline-block font-medium" %>
       <% end %>
-      <%= link_to "Downvote", topic, class: "rounded-lg py-2 ml-2 px-4 bg-gray-100 inline-block font-medium" %>
+      <%= link_to "Downvote", topic, class: "py-2 ml-2 px-4 bg-gray-100 inline-block font-medium" %>
     <% end %>
   <% end %>
 </div>

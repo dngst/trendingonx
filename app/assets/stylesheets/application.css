@@ -20,7 +20,7 @@
 }
 
 html {
-  scrollbar-color: #888DA7 white;
+  scrollbar-color: #E2DFE9 white;
 }
 
 ::-webkit-scrollbar {
@@ -30,6 +30,6 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888DA7;
+  background: #E2DFE9;
   border-radius: 5px;
 }
