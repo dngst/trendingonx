@@ -2,6 +2,7 @@
 
 class TopicsController < ApplicationController
   before_action :set_topic, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: [:new]
 
   # GET /topics or /topics.json
   def index
