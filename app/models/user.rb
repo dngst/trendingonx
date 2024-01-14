@@ -13,7 +13,7 @@ class User < ApplicationRecord
   private
 
   def generate_username
-    self.username = "user_#{SecureRandom.hex(4)}"
+    self.username = SecureRandom.hex(6)
   end
 end
 
