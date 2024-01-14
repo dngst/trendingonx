@@ -1,6 +1,6 @@
 # Trendingonx
 
-> Identify trending topics without sifting through ads
+> Identify trending topics on X
 
 ## Install
 
