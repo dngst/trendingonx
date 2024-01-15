@@ -1,13 +1,15 @@
 <div id="<%= dom_id topic %>" class="max-w-xl">
-  <%= link_to topic, class: "hover:underline underline-offset-4" do %>
+  <%= link_to topic, class: "hover:underline" do %>
     <h1 class="mt-5 <%= action_name == "show" ? 'text-4xl' : 'text-3xl' %>">
       <%= topic.title %>
     </h1>
   <% end %>
 
-  <p class="mt-2 text-gray-500 text-sm">
-    <code>&#8212;&#8212;</code> <%= topic.user.username %>
-  </p>
+  <%= link_to user_path(topic.user), class: "hover:underline" do %>
+    <p class="mt-2 text-gray-500 text-sm">
+       @<%= topic.user.username %>
+    </p>
+  <% end %>
 
   <%= embed_tweet_html(topic.x_link) %>
 
