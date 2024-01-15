@@ -13,15 +13,16 @@ end
 #
 # Table name: topics
 #
-#  id         :bigint           not null, primary key
-#  downvotes  :integer          default(0), not null
-#  hashtag    :string
-#  slug       :string
-#  title      :string
-#  x_link     :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint           not null
+#  id                 :bigint           not null, primary key
+#  downvoted_user_ids :text
+#  downvotes          :integer          default(0), not null
+#  hashtag            :string
+#  slug               :string
+#  title              :string
+#  x_link             :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  user_id            :bigint           not null
 #
 # Indexes
 #
