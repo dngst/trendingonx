@@ -2,6 +2,7 @@
 
 class Topic < ApplicationRecord
   extend FriendlyId
+  serialize :downvoted_user_ids, Array, coder: JSON
 
   belongs_to :user
   validates :title, :hashtag, :x_link, presence: true
@@ -12,21 +13,24 @@ class Topic < ApplicationRecord
     title_changed? || super
   end
 
-  def extract_tweet_id_from_url(tweet_url)
-    match_data = tweet_url.match(%r{twitter\.com/\w+/status/(\d+)})
+  def downvote!(user)
+    return if user_has_downvoted?(user)
 
-    return unless match_data
+    update(downvotes: downvotes + 1, downvoted_user_ids: downvoted_user_ids << user.id)
+  end
 
-    match_data[1]
+  def user_has_downvoted?(user)
+    downvoted_user_ids.include?(user.id)
   end
 end
-
 # == Schema Information
 #
 # Table name: topics
 #
 #  id         :bigint           not null, primary key
+#  downvotes  :integer          default(0), not null
 #  hashtag    :string
+#  slug       :string
 #  title      :string
 #  x_link     :string
 #  created_at :datetime         not null
@@ -35,6 +39,7 @@ end
 #
 # Indexes
 #
+#  index_topics_on_slug     (slug) UNIQUE
 #  index_topics_on_user_id  (user_id)
 #
 # Foreign Keys

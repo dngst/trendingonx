@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class TopicsController < ApplicationController
-  before_action :set_topic, only: %i[show edit update destroy]
-  before_action :authenticate_user!, only: [:new]
+  before_action :set_topic, only: %i[show edit update destroy downvote]
+  before_action :authenticate_user!, only: [:new, :downvote]
 
   # GET /topics or /topics.json
   def index
@@ -58,6 +58,22 @@ class TopicsController < ApplicationController
     end
   end
 
+  def downvote
+    @topic.downvote!(current_user)
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.replace(
+            'downvote_counter',
+            partial: 'topics/downvote_counter',
+            locals: { counter: @topic.downvotes, topic: @topic }
+          )
+        ]
+      end
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -70,3 +86,4 @@ class TopicsController < ApplicationController
     params.require(:topic).permit(:title, :x_link, :hashtag, :user_id)
   end
 end
+

@@ -14,7 +14,9 @@ end
 # Table name: topics
 #
 #  id         :bigint           not null, primary key
+#  downvotes  :integer          default(0), not null
 #  hashtag    :string
+#  slug       :string
 #  title      :string
 #  x_link     :string
 #  created_at :datetime         not null
@@ -23,6 +25,7 @@ end
 #
 # Indexes
 #
+#  index_topics_on_slug     (slug) UNIQUE
 #  index_topics_on_user_id  (user_id)
 #
 # Foreign Keys

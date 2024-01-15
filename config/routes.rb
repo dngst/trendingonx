@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :topics
+  resources :topics do
+    member do
+      post 'downvote'
+    end
+  end
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :users, only: [:show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
