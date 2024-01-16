@@ -1,0 +1,18 @@
+<nav class="bg-white shadow-md fixed top-0 w-full px-4 py-4 hidden z-1" data-navbar-target="content">
+    <div class="flex justify-between">
+      <div></div>
+      <div data-action="click->navbar#close" class="hover:cursor-pointer">
+        <%= image_tag "bx-x-circle.svg", alt: "Close", class: "w-8", draggable: false %>
+      </div>
+    </div>
+    <ul class="text-right py-2">
+      <li class="py-2 px-2 text-lg"><%= link_to "Home", root_path %></li>
+      <li class="py-2 px-2 text-lg"><%= link_to "Add topic", new_topic_path %></li>
+      <% if user_signed_in? %>
+        <li class="py-2 px-2 text-lg"><%= link_to "Profile", user_path(current_user) %></li>
+        <li class="py-3 px-2 text-lg sign-out text-gray-500"><%= link_to "Sign out", destroy_user_session_path, class: "sign-out", data: { turbo_method: :delete } %></li>
+      <% else %>
+        <li class="py-2 px-2 text-lg"><%= link_to "Sign in",  new_user_session_path %></li>
+     <% end %>
+    </ul>
+</nav>

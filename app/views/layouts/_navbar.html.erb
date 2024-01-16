@@ -1,31 +1,45 @@
-<nav class="bg-white fixed top-0 w-full">
-  <div class="container mx-auto flex items-center justify-between p-4">
+<div data-controller="navbar" data-action="resize@window->navbar#closeOnBigScreen" class="navbar">
+  <nav class="bg-white fixed top-0 w-full">
+    <div class="container mx-auto flex items-center justify-between p-4">
 
-    <div class="flex items-center">
-      <%= link_to root_path do %>
-        <p class="text-black text-2xl font-semibold hidden lg:flex">
-          Trending on X
-        </p>
-      <% end %>
-    </div>
-
-    <div class="flex items-center space-x-6 ml-auto">
-      <%= render "search/form" %>
-
-      <%= link_to "Add topic", new_topic_path %>
-      <% if user_signed_in? %>
-        <%= link_to "Profile", user_path(current_user) %>
-      <% end %>
-      <% if user_signed_in? %>
-        <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
-          <% cache('bx-log-out-circle.svg') do %>
-            <%= image_tag "bx-log-out-circle.svg", alt: "Downvote", class: "w-8", draggable:false %>
-          <% end %>
+      <div class="flex items-center">
+        <%= link_to root_path do %>
+          <p class="text-black text-2xl font-semibold hidden lg:flex">
+            Trending on X
+          </p>
         <% end %>
-      <% else %>
-        <%= link_to "Sign in", new_user_session_path %>
-      <% end %>
-    </div>
+      </div>
 
-  </div>
-</nav>
+      <div class="flex items-center space-x-6 ml-auto">
+        <%= render "search/form" %>
+
+        <div class="hidden lg:flex">
+          <%= link_to "Add topic", new_topic_path, class: "mr-4" %>
+
+          <% if user_signed_in? %>
+            <%= link_to "Profile", user_path(current_user), class: "mr-4" %>
+          <% end %>
+
+          <% if user_signed_in? %>
+            <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "mr-4" do %>
+              <% cache('bx-log-out-circle.svg') do %>
+                <%= image_tag "bx-log-out-circle.svg", alt: "Downvote", class: "w-8", draggable:false %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <%= link_to "Sign in", new_user_session_path, class: "mr-4" %>
+          <% end %>
+        </div>
+
+        <div class="lg:hidden" role="button" data-action="click->navbar#toggle">
+          <% cache("bx-menu.svg") do %>
+            <%= image_tag "bx-menu.svg", alt: "Menu", class: "h-8 w-8", draggable:false %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <%= render "layouts/mobile_nav" %>
+</div>
