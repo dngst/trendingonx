@@ -33,3 +33,12 @@ html {
   background: #E2DFE9;
   border-radius: 5px;
 }
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 8px;
+  color: #393E41;
+  padding: 5px;
+  cursor: pointer;
+}
