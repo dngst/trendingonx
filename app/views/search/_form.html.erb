@@ -1,0 +1,6 @@
+<%= form_tag(search_path, method: :get, data: { turbo_frame: :search_results, turbo_action: "advance" }) do %>
+  <%= text_field_tag :query, params[:query],
+   placeholder: "Search",
+   class: "border border-gray-300 rounded-full focus:outline-none focus:border-gray-400 focus:border-gray-400 focus:ring-0",
+   oninput: "this.form.requestSubmit()" %>
+<% end %>

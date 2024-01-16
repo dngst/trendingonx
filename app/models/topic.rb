@@ -2,6 +2,13 @@
 
 class Topic < ApplicationRecord
   extend FriendlyId
+  include PgSearch::Model
+
+  pg_search_scope :search_by_title_x_link_and_hashtag,
+                  against: %i[title hashtag x_link user_id], using: {
+                    tsearch: { prefix: true }
+                  }
+
   serialize :downvoted_user_ids, Array, coder: JSON
 
   belongs_to :user

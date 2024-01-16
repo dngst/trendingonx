@@ -1,0 +1,17 @@
+<h1 class="text-4xl mb-4 text-gray-800">Search results</h1>
+
+<%= turbo_frame_tag :search_results do %>
+  <% if @topics %>
+    <% @topics.each do |topic| %>
+      <%= render "topics/topic", topic: topic %>
+    <% end %>
+  <% end %>
+
+  <% if @users %>
+    <% @users.each do |user| %>
+      <%= link_to user_path(user), class: "underline mt-5" do %>
+        @<%= user.username %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

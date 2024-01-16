@@ -2,6 +2,11 @@
 
 class User < ApplicationRecord
   extend FriendlyId
+  include PgSearch::Model
+
+  pg_search_scope :search_by_name_and_slug, against: %i[username slug], using: {
+    tsearch: { prefix: true }
+  }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

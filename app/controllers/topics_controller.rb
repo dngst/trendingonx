@@ -2,11 +2,11 @@
 
 class TopicsController < ApplicationController
   before_action :set_topic, only: %i[show edit update destroy downvote]
-  before_action :authenticate_user!, only: [:new, :downvote]
+  before_action :authenticate_user!, only: %i[new downvote]
 
   # GET /topics or /topics.json
   def index
-    @topics = Topic.all.order(created_at: :desc)
+    @topics = Topic.order(created_at: :desc)
   end
 
   # GET /topics/1 or /topics/1.json
@@ -86,4 +86,3 @@ class TopicsController < ApplicationController
     params.require(:topic).permit(:title, :x_link, :hashtag, :user_id)
   end
 end
-
