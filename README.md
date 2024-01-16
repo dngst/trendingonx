@@ -1,4 +1,4 @@
-# Trendingonx
+# Trending on X
 
 > Identify trending topics on X
 
