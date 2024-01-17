@@ -1,0 +1,11 @@
+<h1 class="text-4xl font-bold mb-6">Plugs</h1>
+
+<ol class="list-decimal">
+  <% @plugs.each do |plug| %>
+  <li class="text-3xl mb-4">
+    <%= link_to user_path(plug), class: "hover:underline" do %>
+      <%= plug.username %>
+    <% end %>
+  </li>
+  <% end %>
+</ol>

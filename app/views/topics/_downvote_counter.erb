@@ -1,3 +1,3 @@
 <%= turbo_frame_tag "topic_#{topic.id}_downvote_counter" do %>
-  <%= button_to "Downvote (#{counter})", downvote_topic_path(topic), method: :post, class: "py-2 ml-2 px-4 bg-gray-100 inline-block font-medium" %>
+  <%= button_to "Downvote #{counter if counter > 0}", downvote_topic_path(topic), method: :post, class: "py-2 ml-2 px-4 bg-gray-100 inline-block font-medium" %>
 <% end %>

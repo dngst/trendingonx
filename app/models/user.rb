@@ -4,6 +4,8 @@ class User < ApplicationRecord
   extend FriendlyId
   include PgSearch::Model
 
+  has_many :topics, dependent: :destroy
+
   pg_search_scope :search_by_name_and_slug, against: %i[username slug], using: {
     tsearch: { prefix: true }
   }

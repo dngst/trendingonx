@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/plugs', to: 'plugs#index', as: :'plug'
   resources :topics do
     member do
       post 'downvote'

@@ -5,7 +5,7 @@
     </h1>
   <% end %>
 
-  <%= link_to user_path(topic.user), class: "hover:underline" do %>
+  <%= link_to user_path(topic.user) do %>
     <p class="mt-2 text-gray-500 text-sm">
        @<%= topic.user.username %>
     </p>

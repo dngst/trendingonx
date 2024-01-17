@@ -65,7 +65,7 @@ class TopicsController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [
           turbo_stream.replace(
-            'downvote_counter',
+            "topic_#{@topic.id}_downvote_counter",
             partial: 'topics/downvote_counter',
             locals: { counter: @topic.downvotes, topic: @topic }
           )
