@@ -16,7 +16,7 @@
 
 .turbo-progress-bar {
   height: 3px !important;
-  background-color: #000000 !important;
+  background-color: grey !important;
 }
 
 html {
