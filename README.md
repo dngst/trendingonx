@@ -11,3 +11,9 @@ $ bin/dev
 ## Tests
 
 $ bundle exec rspec
+
+## Todo
+
+* Removal strategy for topics with a certain number of downvotes
+
+* Deploy
