@@ -3,7 +3,9 @@
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <div class="mb-4">
-      <%= f.label :email, class: "block" %>
+      <%= f.label :email, class: "block" do %>
+        Email <span class="text-red-500">*</span>
+      <% end %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full px-3 py-2 border border-gray-300 mt-2 focus:outline-none focus:border-black focus:ring-black" %>
       <% if resource.errors.include?(:email) %>
         <% resource.errors.full_messages_for(:email).each do |error| %>
@@ -13,7 +15,9 @@
     </div>
 
     <div class="mb-4">
-      <%= f.label :password, class: "block" %>
+      <%= f.label :password, class: "block" do %>
+        Password <span class="text-red-500">*</span>
+      <% end %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
@@ -26,7 +30,9 @@
     </div>
 
     <div class="mb-4">
-      <%= f.label :password_confirmation, class: "block" %>
+      <%= f.label :password_confirmation, class: "block" do %>
+        Password confirmation <span class="text-red-500">*</span>
+      <% end %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full px-3 py-2 border border-gray-300 mt-2 focus:outline-none focus:border-black focus:ring-black" %>
       <% if resource.errors.include?(:password_confirmation) %>
         <% resource.errors.full_messages_for(:password_confirmation).each do |error| %>

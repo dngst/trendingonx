@@ -2,11 +2,16 @@
   <h1 class="text-4xl font-bold mb-2"><%= @user.username %></h1>
   <% if user_signed_in? && current_user == @user %>
     <p class="text-gray-600"><%= @user.email %></p>
-    <%= link_to "Edit profile", edit_user_registration_path, class: "text-flostonlink underline my-4" %>
+    <%= link_to "Edit profile", edit_user_registration_path, class: " text-gray-600 text-flostonlink underline my-4" %>
   <% end %>
 <% end %>
 
 <h2 class="text-3xl mt-8 mb-2 font-semibold text-gray-800">Topics</h2>
-<% @topics.each do  |topic| %>
-  <%= render "topics/topic", topic: topic %>
+
+<% if @topics.present? %>
+  <% @topics.each do  |topic| %>
+    <%= render "topics/topic", topic: topic %>
+  <% end %>
+<% else %>
+  <%= render 'layouts/empty_state', message: "You haven't created any topics yet." %>
 <% end %>
