@@ -20,7 +20,7 @@
   <% if action_name != "show" %>
     <div class="flex">
       <% if user_topics(topic) %>
-        <%= link_to "Edit topic", edit_topic_path(topic), class: "py-2 ml-2 px-4 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Edit topic", edit_topic_path(topic), class: "py-2 mr-3 ml-2 px-4 bg-gray-100 inline-block font-medium" %>
       <% end %>
 
       <% if user_signed_in? %>
