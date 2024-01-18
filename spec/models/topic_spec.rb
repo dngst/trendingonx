@@ -3,7 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe Topic do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to validate_presence_of :title }
+  it { is_expected.to validate_presence_of :x_link }
+  it { is_expected.to validate_presence_of :hashtag }
+  it { is_expected.to belong_to :user }
 end
 
 # == Schema Information
@@ -13,10 +16,10 @@ end
 #  id                 :bigint           not null, primary key
 #  downvoted_user_ids :text
 #  downvotes          :integer          default(0), not null
-#  hashtag            :string
+#  hashtag            :string           not null
 #  slug               :string
-#  title              :string
-#  x_link             :string
+#  title              :string           not null
+#  x_link             :string           not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  user_id            :bigint           not null

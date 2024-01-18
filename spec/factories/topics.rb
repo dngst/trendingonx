@@ -2,10 +2,9 @@
 
 FactoryBot.define do
   factory :topic do
-    title { 'MyString' }
-    x_link { 'MyString' }
-    hashtag { 'MyString' }
-    user { nil }
+    title { Faker::Lorem.sentence }
+    x_link { 'https://twitter.com/X/status/1716896883434799556' }
+    hashtag { Faker::Lorem.word }
   end
 end
 
@@ -16,10 +15,10 @@ end
 #  id                 :bigint           not null, primary key
 #  downvoted_user_ids :text
 #  downvotes          :integer          default(0), not null
-#  hashtag            :string
+#  hashtag            :string           not null
 #  slug               :string
-#  title              :string
-#  x_link             :string
+#  title              :string           not null
+#  x_link             :string           not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  user_id            :bigint           not null

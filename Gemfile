@@ -73,6 +73,7 @@ end
 
 group :test do
   gem 'shoulda-matchers', '~> 6.0'
+  gem 'simplecov', require: false
 end
 
 gem 'devise', '~> 4.9'
@@ -82,3 +83,5 @@ gem 'friendly_id', '~> 5.5'
 gem 'httparty', '~> 0.21.0'
 
 gem 'pg_search', '~> 2.3'
+
+gem "faker", "~> 3.2"
