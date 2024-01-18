@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 module TweetsHelper
-  def embed_tweet_html(tweet_url)
-    extract_tweet_id_from_url(tweet_url)
+  def embed_tweet(tweet_url)
     oembed_url = "https://publish.twitter.com/oembed?url=#{CGI.escape(tweet_url)}"
 
     begin
@@ -11,12 +10,5 @@ module TweetsHelper
     rescue StandardError
       'Error embedding tweet'
     end
-  end
-
-  private
-
-  def extract_tweet_id_from_url(tweet_url)
-    match_data = tweet_url.match(%r{twitter\.com/\w+/status/(\d+)})
-    match_data[1] if match_data
   end
 end
