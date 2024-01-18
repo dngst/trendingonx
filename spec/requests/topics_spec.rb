@@ -15,7 +15,7 @@ RSpec.describe '/topics' do
   end
 
   let(:new_attributes) do
-    { title: 'Updated Title', x_link: 'New link', hashtag: 'New hashtag', user_id: user.id }
+    { title: 'Updated title', x_link: 'New link', hashtag: 'New hashtag', user_id: user.id }
   end
 
   before do
@@ -98,6 +98,8 @@ RSpec.describe '/topics' do
 
         patch topic_url(topic), params: { topic: new_attributes }
         topic.reload
+        expect(topic.title).to eq('Updated title')
+        expect(topic.x_link).to eq('New link')
       end
 
       it 'redirects to the topic' do
