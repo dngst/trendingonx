@@ -4,13 +4,6 @@ class Topic < ApplicationRecord
   extend FriendlyId
   include PgSearch::Model
 
-  pg_search_scope :search_by_title_x_link_and_hashtag,
-                  against: %i[title hashtag x_link user_id], using: {
-                    tsearch: { prefix: true }
-                  }
-
-  serialize :downvoted_user_ids, Array, coder: JSON
-
   belongs_to :user
   validates :title, :hashtag, :x_link, presence: true
 
@@ -19,6 +12,13 @@ class Topic < ApplicationRecord
   def should_generate_new_friendly_id?
     title_changed? || super
   end
+
+  pg_search_scope :search_by_title_x_link_and_hashtag,
+                  against: %i[title hashtag x_link user_id], using: {
+                    tsearch: { prefix: true }
+                  }
+
+  serialize :downvoted_user_ids, type: Array, coder: JSON
 
   def downvote!(user)
     if user_has_downvoted?(user)

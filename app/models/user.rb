@@ -5,6 +5,11 @@ class User < ApplicationRecord
   include PgSearch::Model
 
   has_many :topics, dependent: :destroy
+  validates :username, presence: true, uniqueness: true
+
+  before_validation :generate_username, on: :create
+
+  friendly_id :username, use: :slugged
 
   pg_search_scope :search_by_name_and_slug, against: %i[username slug], using: {
     tsearch: { prefix: true }
@@ -14,11 +19,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  validates :username, presence: true, uniqueness: true
-  before_validation :generate_username, on: :create
-
-  friendly_id :username, use: :slugged
 
   private
 
