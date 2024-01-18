@@ -21,9 +21,11 @@ class Topic < ApplicationRecord
   end
 
   def downvote!(user)
-    return if user_has_downvoted?(user)
-
-    update(downvotes: downvotes + 1, downvoted_user_ids: downvoted_user_ids << user.id)
+    if user_has_downvoted?(user)
+      update(downvotes: downvotes - 1, downvoted_user_ids: downvoted_user_ids - [user.id])
+    else
+      update(downvotes: downvotes + 1, downvoted_user_ids: downvoted_user_ids << user.id)
+    end
   end
 
   def user_has_downvoted?(user)
