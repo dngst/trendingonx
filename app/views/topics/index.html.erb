@@ -1,5 +1,9 @@
 <div class="w-full">
   <div id="topics" class="min-w-full mb-4">
-    <%= render @topics %>
+    <% if @topics.present? %>
+      <%= render @topics %>
+    <% else %>
+      <%= render 'layouts/empty_state', message: "Be the first to confirm a topic.", margin: "mt-36" %>
+    <% end %>
   </div>
 </div>
