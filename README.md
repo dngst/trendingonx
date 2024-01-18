@@ -12,6 +12,14 @@ $ bin/dev
 
 $ bundle exec rspec
 
+## Maintainer
+
+[@dngst](https://github.com/dngst)
+
+## Contributing
+
+PRs and issues accepted. See [CONTRIBUTING.md](./CONTRIBUTING.md)
+
 ## Todo
 
 * Removal strategy for topics with a certain number of downvotes
