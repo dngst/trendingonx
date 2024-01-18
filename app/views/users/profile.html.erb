@@ -6,12 +6,17 @@
   <% end %>
 <% end %>
 
-<h2 class="text-3xl mt-8 mb-2 font-semibold text-gray-800">Topics</h2>
-
 <% if @topics.present? %>
+  <h2 class="text-3xl mt-8 mb-2 font-semibold text-gray-800">Topics</h2>
+
   <% @topics.each do  |topic| %>
     <%= render "topics/topic", topic: topic %>
   <% end %>
+
 <% else %>
-  <%= render 'layouts/empty_state', message: "You haven't created any topics yet.", margin: "mt-8" %>
+
+  <% if current_user == @user %>
+    <%= render 'layouts/empty_state', message: "You haven't created any topics yet.", margin: "mt-8" %>
+  <% end %>
+
 <% end %>
