@@ -9,6 +9,7 @@ approachable and respectable.
 
 https://opensource.guide/how-to-contribute/#opening-a-pull-request
 
+- Have a look at the [todos](https://github.com/users/dngst/projects/2)
 - Edit the README if need be to keep documentation updated.
 - Fix a typo or two.
 
