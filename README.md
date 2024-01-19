@@ -2,6 +2,18 @@
 
 > Identify trending topics on X
 
+## Requirements
+
+* Ruby
+
+* Bundler
+
+* Ruby on Rails
+
+* PostgreSQL
+
+See [Gemfile](./Gemfile)
+
 ## Install
 
 $ bin/setup
