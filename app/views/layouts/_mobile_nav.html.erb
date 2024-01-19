@@ -8,6 +8,7 @@
     <ul class="text-right py-2">
       <li class="py-2 px-2 text-lg"><%= link_to "Home", root_path %></li>
       <li class="py-2 px-2 text-lg"><%= link_to "Add topic", new_topic_path %></li>
+      <li class="py-2 px-2 text-lg"><%= link_to "Plugs", plug_path %></li>
       <% if user_signed_in? %>
         <li class="py-2 px-2 text-lg"><%= link_to "Profile", user_path(current_user) %></li>
         <li class="py-3 px-2 text-lg sign-out text-gray-500"><%= link_to "Sign out", destroy_user_session_path, class: "sign-out", data: { turbo_method: :delete } %></li>
