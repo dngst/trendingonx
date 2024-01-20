@@ -5,11 +5,13 @@
     </h1>
   <% end %>
 
-  <%= link_to user_path(topic.user), data: { turbo_frame: "_top" } do %>
-    <p class="mt-2 text-gray-500 text-sm">
-       <%= topic.user.username %>
-    </p>
-  <% end %>
+  <p class="mt-2 text-gray-500 text-sm">
+    <%= link_to user_path(topic.user), data: { turbo_frame: "_top" } do %>
+      <%= topic.user.username %>
+    <% end %>
+    &middot;
+    <%= posted_on(topic.created_at) %>
+  </p>
 
   <%= embed_tweet(topic.x_link) %>
 
