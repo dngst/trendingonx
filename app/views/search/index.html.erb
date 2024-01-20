@@ -1,6 +1,11 @@
-<h1 class="text-4xl mb-4 text-gray-800">Search results</h1>
-
 <%= turbo_frame_tag :search_results do %>
+  <h1 class="text-4xl mb-4 pb-4 text-gray-800">
+    Search results
+    <% if params[:query].present? %>
+      for <span class='font-semibold'>"<%= "#{params[:query]}" %>"</span>
+    <% end %>
+  </h1>
+
   <% if @topics %>
     <% @topics.each do |topic| %>
       <%= render "topics/topic", topic: topic %>
@@ -9,8 +14,8 @@
 
   <% if @users %>
     <% @users.each do |user| %>
-      <%= link_to user_path(user), class: "underline mt-5" do %>
-        @<%= user.username %>
+      <%= link_to user_path(user), class: "text-2xl underline mt-5", data: { turbo_frame: "_top" } do %>
+        <%= user.username %>
       <% end %>
     <% end %>
   <% end %>

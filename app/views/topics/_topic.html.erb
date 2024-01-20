@@ -1,11 +1,11 @@
 <div id="<%= dom_id topic %>" class="max-w-xl">
-  <%= link_to topic, class: "hover:underline" do %>
+  <%= link_to topic, class: "hover:underline", data: { turbo_frame: "_top" } do %>
     <h1 class="mt-5 <%= action_name == "show" ? 'text-4xl' : 'text-3xl' %>">
       <%= topic.title %>
     </h1>
   <% end %>
 
-  <%= link_to user_path(topic.user) do %>
+  <%= link_to user_path(topic.user), data: { turbo_frame: "_top" } do %>
     <p class="mt-2 text-gray-500 text-sm">
        <%= topic.user.username %>
     </p>
@@ -20,7 +20,7 @@
   <% if action_name != "show" %>
     <div class="flex">
       <% if user_topics(topic) %>
-        <%= link_to "Edit topic", edit_topic_path(topic), class: "py-2 mr-3 ml-2 px-4 bg-gray-100 inline-block font-medium" %>
+        <%= link_to "Edit topic", edit_topic_path(topic), class: "py-2 mr-3 ml-2 px-4 bg-gray-100 inline-block font-medium", data: { turbo_frame: "_top" } %>
       <% end %>
 
       <% if user_signed_in? %>
