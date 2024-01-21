@@ -5,7 +5,9 @@ class Topic < ApplicationRecord
   include PgSearch::Model
 
   belongs_to :user
+
   validates :title, :hashtag, :x_link, presence: true
+  validates :hashtag, format: { without: /\A#/, message: I18n.t('topics.validations.hashtag') }
 
   friendly_id :title, use: :slugged
 
