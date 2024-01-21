@@ -1,4 +1,3 @@
 <% cache ['users_count', users] do %>
-  <%= users.size %>
-  <%= "User".pluralize(users.size) %>
+  <%= "#{users.size} #{'User'.pluralize(users.size)}" %>
 <% end %>
