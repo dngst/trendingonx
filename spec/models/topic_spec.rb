@@ -7,6 +7,7 @@ RSpec.describe Topic do
   it { is_expected.to validate_presence_of :x_link }
   it { is_expected.to validate_presence_of :hashtag }
   it { is_expected.to belong_to :user }
+  it { is_expected.not_to allow_value('#hashtag').for(:hashtag) }
 end
 
 # == Schema Information
