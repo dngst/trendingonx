@@ -25,12 +25,13 @@
 
   <% if action_name != "show" %>
     <div class="flex">
-      <% if user_topics(topic) %>
-        <%= link_to "Edit topic", edit_topic_path(topic), class: "py-2 mr-3 ml-2 px-4 bg-gray-100 inline-block font-medium", data: { turbo_frame: "_top" } %>
-      <% end %>
-
       <% if user_signed_in? %>
         <%= render "topics/downvote_counter", counter: topic.downvotes, topic: topic %>
+      <% end %>
+      <% if user_topics(topic) %>
+        <%= link_to "Edit topic", edit_topic_path(topic),
+          class: "py-2 ml-1 px-4 text-gray-500 border border-silver inline-block font-medium",
+          data: { turbo_frame: "_top" } %>
       <% end %>
     </div>
   <% end %>
