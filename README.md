@@ -20,6 +20,10 @@ $ bin/setup
 
 $ bin/dev
 
+## Caching
+
+Run $ bin/rails dev:cache to toggle caching
+
 ## Tests
 
 $ bundle exec rspec
