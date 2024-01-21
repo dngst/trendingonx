@@ -6,13 +6,21 @@
     <% end %>
   </h1>
 
-  <% if @topics %>
+  <% if @topics.present? %>
+    <h2 class="text-3xl mt-8 mb-2 font-semibold text-gray-800">
+      <%= render "layouts/topic_count", topics: @topics %>
+    </h2>
+
     <% @topics.each do |topic| %>
       <%= render "topics/topic", topic: topic %>
     <% end %>
   <% end %>
 
-  <% if @users %>
+  <% if @users.present? %>
+    <h2 class="text-3xl mt-8 mb-2 font-semibold text-gray-800">
+      <%= render "layouts/user_count", users: @users %>
+    </h2>
+
     <% @users.each do |user| %>
       <%= link_to user_path(user), class: "text-2xl underline mt-5", data: { turbo_frame: "_top" } do %>
         <%= user.username %>
