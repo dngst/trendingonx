@@ -1,0 +1,4 @@
+<% cache ['topics_count', topics] do %>
+  <%= topics.size %>
+  <%= "Topic".pluralize(topics.size) %>
+<% end %>
