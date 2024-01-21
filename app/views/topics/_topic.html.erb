@@ -1,9 +1,9 @@
 <div id="<%= dom_id topic %>" class="max-w-xl">
-  <%= link_to topic, class: "hover:underline", data: { turbo_frame: "_top" } do %>
-    <h1 class="mt-5 <%= action_name == "show" ? 'text-4xl' : 'text-3xl' %>">
+  <h1 class="mt-5 <%= action_name == 'show' ? 'text-4xl' : 'text-3xl' %>">
+    <%= link_to topic, class: "#{'hover:underline' if action_name != 'show'}", data: { turbo_frame: '_top' } do %>
       <%= topic.title %>
-    </h1>
-  <% end %>
+    <% end %>
+  </h1>
 
   <p class="mt-2 text-gray-500 text-sm">
     <%= link_to user_path(topic.user), data: { turbo_frame: "_top" } do %>
