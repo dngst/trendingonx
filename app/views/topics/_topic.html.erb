@@ -1,7 +1,11 @@
 <div id="<%= dom_id topic %>" class="max-w-xl">
   <h1 class="mt-5 <%= action_name == 'show' ? 'text-4xl' : 'text-3xl' %>">
-    <%= link_to topic, class: "#{'hover:underline' if action_name != 'show'}", data: { turbo_frame: '_top' } do %>
+    <% if action_name == 'show' %>
       <%= topic.title %>
+    <% else %>
+      <%= link_to topic, class: 'hover:underline', data: { turbo_frame: '_top' } do %>
+        <%= topic.title %>
+      <% end %>
     <% end %>
   </h1>
 
