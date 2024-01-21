@@ -20,6 +20,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def self.top_users(limit, min_topic_count)
+    joins(:topics)
+      .select('users.*, COUNT(topics.id) as topic_count')
+      .group('users.id')
+      .having('COUNT(topics.id) >= ?', min_topic_count)
+      .order('topic_count DESC')
+      .limit(limit)
+  end
+
   private
 
   def generate_username
