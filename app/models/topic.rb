@@ -8,6 +8,7 @@ class Topic < ApplicationRecord
 
   validates :title, :hashtag, :x_link, presence: true
   validates :hashtag, format: { without: /\A#/, message: I18n.t('topics.validations.hashtag') }
+  validates_with TweetUrlValidator, fields: [:x_link]
 
   friendly_id :title, use: :slugged
 

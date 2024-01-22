@@ -8,6 +8,8 @@ RSpec.describe Topic do
   it { is_expected.to validate_presence_of :hashtag }
   it { is_expected.to belong_to :user }
   it { is_expected.not_to allow_value('#hashtag').for(:hashtag) }
+  it { is_expected.not_to allow_value('plainstring').for(:x_link) }
+  it { is_expected.to allow_value('https://twitter.com/CatWorkers/status/1747065669487624601').for(:x_link) }
 end
 
 # == Schema Information

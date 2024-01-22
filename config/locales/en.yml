@@ -31,3 +31,4 @@ en:
   topics:
     validations:
       hashtag: "should not start with '#' "
+      x_link: "must be a link to an X post"
