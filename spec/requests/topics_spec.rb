@@ -7,7 +7,9 @@ RSpec.describe '/topics' do
   let(:topic) { create(:topic, user_id: user.id) }
 
   let(:valid_attributes) do
-    { title: 'Title', x_link: 'Link', hashtag: 'hashtag', user_id: user.id }
+    { title: 'Title',
+      x_link: 'https://twitter.com/CatWorkers/status/1747065669487624601',
+      hashtag: 'hashtag', user_id: user.id }
   end
 
   let(:invalid_attributes) do
@@ -15,7 +17,9 @@ RSpec.describe '/topics' do
   end
 
   let(:new_attributes) do
-    { title: 'Updated title', x_link: 'New link', hashtag: 'New hashtag', user_id: user.id }
+    { title: 'Updated title',
+      x_link: 'https://twitter.com/CatWorkers/status/1749242377347244062',
+      hashtag: 'newhashtag', user_id: user.id }
   end
 
   before do
@@ -99,7 +103,7 @@ RSpec.describe '/topics' do
         patch topic_url(topic), params: { topic: new_attributes }
         topic.reload
         expect(topic.title).to eq('Updated title')
-        expect(topic.x_link).to eq('New link')
+        expect(topic.x_link).to eq('https://twitter.com/CatWorkers/status/1749242377347244062')
       end
 
       it 'redirects to the topic' do
