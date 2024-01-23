@@ -2,9 +2,12 @@
   <%= button_to downvote_topic_path(topic), method: :post, class: "py-2 px-0 mr-1" do %>
     <div class="flex downvote-container items-center">
       <% cache("bx-downvote.svg") do %>
-        <%= image_tag "bx-downvote.svg", alt: "Downvote", class: "hover:text-red-500", draggable: false %>
+        <%= image_tag "bx-downvote.svg", alt: "Downvote", draggable: false %>
       <% end %>
-      <%= "#{counter if counter > 0}" %>
+      <span class="text-sm">
+        <%= topic.user_has_downvoted?(current_user) ? '+' : '' %>
+        <%= "#{format_count(counter) if counter > 0}" %>
+      </span>
     </div>
   <% end %>
 <% end %>
