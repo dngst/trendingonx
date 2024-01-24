@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 class TopicsController < ApplicationController
+  include Pagy::Backend
+
   before_action :set_topic, only: %i[show edit update destroy downvote]
   before_action :authenticate_user!, only: %i[new downvote]
 
   # GET /topics or /topics.json
   def index
-    @topics = Topic.order(created_at: :desc)
+    @pagy, @topics = pagy(Topic.order(created_at: :desc))
   end
 
   # GET /topics/1 or /topics/1.json
