@@ -85,3 +85,5 @@ gem 'httparty', '~> 0.21.0'
 gem 'pg_search', '~> 2.3'
 
 gem 'faker', '~> 3.2'
+
+gem 'pagy', '~> 6.4'

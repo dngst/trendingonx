@@ -1,9 +1,12 @@
-<div class="w-full">
-  <div id="topics" class="min-w-full mb-4">
-    <% if @topics.present? %>
-      <%= render @topics %>
-    <% else %>
-      <%= render 'layouts/empty_state', message: "Be the first to confirm a topic.", margin: "mt-36" %>
+<% if @topics.present? %>
+  <%= turbo_frame_tag "topics_#{@pagy.page}" do %>
+    <%= render partial: "topic", collection: @topics, cached: true %>
+    <% unless @pagy.page == @pagy.pages %>
+      <%= turbo_frame_tag "topics_#{@pagy.next}", src: topics_path(page: @pagy.next), loading: "lazy" do %>
+        <%= render "layouts/loader" %>
+      <% end %>
     <% end %>
-  </div>
-</div>
+  <% end %>
+<% else %>
+  <%= render 'layouts/empty_state', message: "Be the first to confirm a topic.", margin: "mt-36" %>
+<% end %>
