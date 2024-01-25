@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "topics#index"
   get 'search', to: 'search#index'
-
-  get "/service-worker.js" => "service_worker#service_worker"
-  get "/manifest.json" => "service_worker#manifest"
+  get '/service-worker.js' => 'service_worker#service_worker'
+  get '/manifest.json' => 'service_worker#manifest'
 end
