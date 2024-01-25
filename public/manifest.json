@@ -1,5 +1,5 @@
 {
-  "short_name": "Tox",
+  "short_name": "ToX",
   "name": "Trending on X",
   "description": "Identify trending topics on X",
   "icons": [
@@ -20,16 +20,16 @@
   "scope": "/",
   "theme_color": "#000000",
   "screenshots": [
-      {
-       "src": "/tox_desktop.png",
-        "sizes": "1366x659",
-        "type": "image/png",
-        "form_factor": "wide"
-      },
-      {
-       "src": "/tox_mobile.png",
-        "sizes": "750x1334",
-        "type": "image/png"
-      }
+    {
+      "src": "/tox_desktop.png",
+      "sizes": "1366x659",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/tox_mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    }
   ]
 }
