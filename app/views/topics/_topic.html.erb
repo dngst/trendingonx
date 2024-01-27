@@ -13,7 +13,6 @@
     <%= link_to user_path(topic.user), data: { turbo_frame: "_top" } do %>
       <%= topic.user.username %>
     <% end %>
-    &middot;
     <%= posted_on(topic.created_at) %>
   </p>
 
