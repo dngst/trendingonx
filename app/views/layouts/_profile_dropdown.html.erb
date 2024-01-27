@@ -1,0 +1,27 @@
+<div data-controller="dropdown" class="relative inline-block text-left">
+  <button
+    data-action="click->dropdown#toggleDropdown"
+    class="rounded-md border border-gray-400 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none">
+    <%= format_name(current_user) %>
+  </button>
+
+  <div
+    data-dropdown-target="dropdown"
+    class="hidden divide-y divide-gray-200 absolute right-0 mt-2 w-48 rounded-md border border-gray-300">
+    <div class="px-4 py-3 text-gray-700 text-sm">
+      Signed in as <span class="font-medium"><%= current_user.email %></span>
+    </div>
+    <div class="py-1">
+      <%= link_to "Profile", user_path(current_user),
+        class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+      <%= link_to "Settings", edit_user_registration_path,
+        method: :delete,
+        class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+    </div>
+    <div class="py-1">
+      <%= link_to "Sign out", destroy_user_session_path,
+        data: { turbo_method: :delete },
+        class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+    </div>
+  </div>
+</div>
