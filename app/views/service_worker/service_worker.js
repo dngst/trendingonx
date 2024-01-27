@@ -58,16 +58,16 @@ registerRoute(
 );
 
 // Offline fallback
-const offlineFallbacStrategy = new CacheFirst();
+const strategy = new CacheFirst();
 
-warmStrategyCache({ urls, offlineFallbackStrategy });
+warmStrategyCache({ urls, strategy });
 
 setCatchHandler(async ({ event }) => {
   switch (event.request.destination) {
     case "document":
-      return offlineFallbackStrategy.handle({
+      return strategy.handle({
         event,
-        request: offlineFallbackUrls[0],
+        request: urls[0],
       });
     default:
       return new Response("Not Found", {
