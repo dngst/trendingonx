@@ -1,4 +1,7 @@
+<% content_for :title, "Profile" %>
+
 <h1 class="text-4xl font-bold mb-2"><%= @user.username %></h1>
+
 <% if user_signed_in? && current_user == @user %>
   <p class="text-gray-600"><%= @user.email %></p>
   <%= link_to "Edit profile", edit_user_registration_path, class: " text-gray-600 text-flostonlink underline my-4" %>
