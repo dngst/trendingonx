@@ -19,7 +19,8 @@
   background-color: grey !important;
 }
 
-html {
+body {
+  scrollbar-width: thin;
   scrollbar-color: #E2DFE9 white;
 }
 
@@ -38,7 +39,6 @@ html {
   position: fixed;
   bottom: 20px;
   right: 8px;
-  color: #393E41;
   padding: 5px;
   cursor: pointer;
 }
