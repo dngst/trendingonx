@@ -2,6 +2,6 @@
 
 module TopicDateHelper
   def posted_on(datetime)
-    sanitize(datetime.strftime('%b %d, %Y &middot; %I:%M %p'))
+    sanitize(datetime.strftime('&middot; %b %d, %Y &middot; %I:%M %p'))
   end
 end
