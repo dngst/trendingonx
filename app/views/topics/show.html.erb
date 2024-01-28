@@ -4,7 +4,7 @@
   <div class="mx-auto">
     <%= render @topic %>
 
-    <div class="flex">
+    <div class="flex items-center justify-center">
       <% if user_topics(@topic) %>
         <%= link_to "Edit topic", edit_topic_path(@topic),
           class: "py-2 mr-3 px-4 ml-2 text-gray-500 border border-gray-500 inline-block font-medium" %>
