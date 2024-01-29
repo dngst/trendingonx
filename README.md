@@ -2,6 +2,7 @@
 
 > Identify trending topics on X
 
+[![Ruby on Rails CI](https://github.com/dngst/trendingonx/actions/workflows/rubyonrails.yml/badge.svg)](https://github.com/dngst/trendingonx/actions/workflows/rubyonrails.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/1b255a6f5dd26987677e/maintainability)](https://codeclimate.com/github/dngst/trendingonx/maintainability)
 
 ## Requirements
