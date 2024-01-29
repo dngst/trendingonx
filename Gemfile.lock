@@ -85,7 +85,12 @@ GEM
     bindex (0.8.1)
     bootsnap (1.17.0)
       msgpack (~> 1.2)
+    brakeman (6.1.1)
+      racc
     builder (3.2.4)
+    bundler-audit (0.9.1)
+      bundler (>= 1.2.0, < 3)
+      thor (~> 1.0)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -325,6 +330,8 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bootsnap
+  brakeman
+  bundler-audit
   debug
   devise (~> 4.9)
   factory_bot_rails
