@@ -8,7 +8,10 @@ class TopicsController < ApplicationController
 
   # GET /topics or /topics.json
   def index
-    @pagy, @topics = pagy(Topic.order(created_at: :desc))
+    ids = Rails.cache.fetch('topic_ids') do
+      Topic.pluck(:id)
+    end
+    @pagy, @topics = pagy(Topic.where(id: ids).order(created_at: :desc))
   end
 
   # GET /topics/1 or /topics/1.json
@@ -28,6 +31,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
+        Rails.cache.delete('topic_ids')
         format.html { redirect_to topic_url(@topic), notice: 'Topic was successfully created.' }
         format.json { render :show, status: :created, location: @topic }
       else
