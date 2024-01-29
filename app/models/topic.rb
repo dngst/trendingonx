@@ -6,6 +6,7 @@ class Topic < ApplicationRecord
 
   belongs_to :user
 
+  before_validation :remove_query_string
   validates :title, :hashtag, :x_link, presence: true
   validates :hashtag, format: { without: /\A#/, message: I18n.t('topics.validations.hashtag') }
   validates_with TweetUrlValidator, fields: [:x_link]
@@ -33,6 +34,16 @@ class Topic < ApplicationRecord
 
   def user_has_downvoted?(user)
     downvoted_user_ids.include?(user.id)
+  end
+
+  private
+
+  def remove_query_string
+    return if x_link.blank?
+
+    uri = URI.parse(x_link)
+    uri.query = nil
+    self.x_link = uri
   end
 end
 # == Schema Information
