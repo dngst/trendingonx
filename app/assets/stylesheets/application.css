@@ -15,7 +15,7 @@
  */
 
 * {
-  transition: all 0.3s ease 0s;
+  transition: all 800ms ease 0s;
 }
 
 .turbo-progress-bar {

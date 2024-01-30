@@ -20,10 +20,13 @@ class TopicsController < ApplicationController
   # GET /topics/new
   def new
     @topic = Topic.new
+    @autofocus = true
   end
 
   # GET /topics/1/edit
-  def edit; end
+  def edit
+    @autofocus = false
+  end
 
   # POST /topics or /topics.json
   def create
