@@ -14,6 +14,10 @@
  *= require_self
  */
 
+* {
+  transition: all 0.3s ease 0s;
+}
+
 .turbo-progress-bar {
   height: 3px !important;
   background-color: grey !important;

@@ -10,7 +10,7 @@
         <%= f.label :email, class: "text-gray-800" do %>
           Email <span class="text-red-500">*</span>
         <% end %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "block border border-gray-200 outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "rounded-lg block border border-gray-300 focus:outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
         <% if resource.errors.include?(:email) %>
           <% resource.errors.full_messages_for(:email).each do |error| %>
             <p class="text-red-500 mt-2"><%= error %></p>
@@ -27,7 +27,7 @@
       <div class="mb-4">
         <%= f.label :password, class: "text-gray-800" %>
         <i class="text-gray-600">(leave blank if you don't want to change it)</i>
-        <%= f.password_field :password, autocomplete: "new-password", class: "block border border-gray-200 outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "rounded-lg block border border-gray-300 focus:outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
         <% if resource.errors.include?(:password) %>
           <% resource.errors.full_messages_for(:password).each do |error| %>
             <p class="text-red-500 mt-2"><%= error %></p>
@@ -42,7 +42,7 @@
 
       <div class="mb-4">
         <%= f.label :password_confirmation, class: "text-gray-800" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "block border border-gray-200 outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "rounded-lg block border border-gray-300 focus:outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
         <% if resource.errors.include?(:password_confirmation) %>
           <% resource.errors.full_messages_for(:password_confirmation).each do |error| %>
             <p class="text-red-500 mt-2"><%= error %></p>
@@ -55,7 +55,7 @@
           Current password <span class="text-red-500">*</span>
         <% end %>
         <i class="text-gray-600">(we need your current password to confirm your changes)</i>
-        <%= f.password_field :current_password, autocomplete: "current-password", class: "block border border-gray-200 outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "rounded-lg block border border-gray-300 focus:outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
         <% if resource.errors.include?(:current_password) %>
           <% resource.errors.full_messages_for(:current_password).each do |error| %>
             <p class="text-red-500 mt-2"><%= error %></p>
@@ -64,7 +64,7 @@
       </div>
 
       <div class="mb-4">
-        <%= f.submit "Update", class: "py-3 px-5 bg-black text-white inline-block font-medium cursor-pointer" %>
+        <%= f.submit "Update", class: "rounded-lg py-3 px-5 bg-black text-white inline-block font-medium cursor-pointer" %>
       </div>
     <% end %>
   </div>
