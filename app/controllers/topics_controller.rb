@@ -32,7 +32,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         Rails.cache.delete('topic_ids')
-        format.html { redirect_to topic_url(@topic), notice: 'Topic was successfully created.' }
+        format.html { redirect_to topic_url(@topic), notice: t('topics.saved') }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to topic_url(@topic), notice: 'Topic was successfully updated.' }
+        format.html { redirect_to topic_url(@topic), notice: t('topics.updated') }
         format.json { render :show, status: :ok, location: @topic }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,7 +59,7 @@ class TopicsController < ApplicationController
     @topic.destroy!
 
     respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
+      format.html { redirect_to topics_url, notice: t('topics.deleted') }
       format.json { head :no_content }
     end
   end
