@@ -3,7 +3,7 @@
     <%= form.label :title do %>
       Title <span class="text-red-500">*</span>
     <% end %>
-    <%= form.text_field :title, placeholder: "Topic title", class: "rounded-lg block border border-gray-300 focus:outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :title, placeholder: "Topic title", autofocus: @autofocus, class: "rounded-lg block border border-gray-300 focus:outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
     <% if topic.errors.include?(:title) %>
       <% topic.errors.full_messages_for(:title).each do |error| %>
         <%= render "layouts/form_error", error: error %>
