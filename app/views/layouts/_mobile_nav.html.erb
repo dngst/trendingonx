@@ -4,7 +4,9 @@
   <div class="flex justify-between">
     <div></div>
     <div data-action="click->navbar#close" class="hover:cursor-pointer px-5 pt-4">
-      <%= image_tag "bx-x-circle.svg", alt: "Close", class: "w-8", draggable: false %>
+      <% cache("bx-x-circle.svg") do %>
+        <%= image_tag "bx-x-circle.svg", alt: "Close", class: "w-8", draggable: false %>
+      <% end %>
     </div>
   </div>
   <ul class="text-right">
