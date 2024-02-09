@@ -19,8 +19,7 @@
 }
 
 .turbo-progress-bar {
-  height: 3px !important;
-  background-color: grey !important;
+  background: #777777;
 }
 
 body {
@@ -46,4 +45,27 @@ body {
   right: 8px;
   padding: 5px;
   cursor: pointer;
+}
+
+@keyframes appear-then-fade {
+  0%, 100% {
+    opacity: 0;
+  }
+
+  5%, 60% {
+    opacity: 1;
+  }
+}
+
+.flash {
+  position: fixed;
+  top: 5.5rem;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  width: max-content
+  animation: appear-then-fade 4s both;
 }
