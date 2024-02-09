@@ -7,13 +7,15 @@
 
 ## Requirements
 
-* Ruby
+- Ruby
 
-* Bundler
+- Bundler
 
-* Ruby on Rails
+- Ruby on Rails
 
-* PostgreSQL
+- PostgreSQL
+
+- Redis
 
 See [Gemfile](./Gemfile)
 
@@ -38,9 +40,3 @@ $ bundle exec rspec
 ## Contributing
 
 PRs and issues accepted. See [CONTRIBUTING.md](./CONTRIBUTING.md)
-
-## Todo
-
-* Removal strategy for topics with a certain number of downvotes
-
-* Deploy
