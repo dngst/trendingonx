@@ -7,7 +7,12 @@ module TweetsHelper
     begin
       Rails.cache.fetch("tweet_#{tweet_url}", expires_in: 12.hours) do
         oembed_response = HTTParty.get(oembed_url)
-        oembed_response['html'].html_safe
+
+        if oembed_response.success?
+          oembed_response['html'].html_safe
+        else
+          'Tweet not found'
+        end
       end
     rescue StandardError
       'Error embedding tweet'
