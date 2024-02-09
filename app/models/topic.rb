@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
+require 'friendly_id_generator'
+
 class Topic < ApplicationRecord
   extend FriendlyId
   include PgSearch::Model
+  include FriendlyIdGenerator
+
+  broadcasts_refreshes
 
   belongs_to :user
 
@@ -11,7 +16,7 @@ class Topic < ApplicationRecord
   validates :hashtag, format: { without: /\A#/, message: I18n.t('topics.validations.hashtag') }
   validates_with TweetUrlValidator, fields: [:x_link]
 
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: %i[slugged history], slug_generator_class: ReusableSlugGenerator
 
   def should_generate_new_friendly_id?
     title_changed? || super

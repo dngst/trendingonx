@@ -4,6 +4,8 @@ class User < ApplicationRecord
   extend FriendlyId
   include PgSearch::Model
 
+  broadcasts_refreshes
+
   has_many :topics, dependent: :destroy
   validates :username, presence: true, uniqueness: true
 
