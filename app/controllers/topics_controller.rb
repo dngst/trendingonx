@@ -35,7 +35,7 @@ class TopicsController < ApplicationController
     respond_to do |format|
       if @topic.save
         Rails.cache.delete('topic_ids')
-        format.html { redirect_to topic_url(@topic), notice: t('topics.saved') }
+        format.html { redirect_to @topic, notice: t('topics.saved') }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -88,6 +88,10 @@ class TopicsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_topic
     @topic = Topic.friendly.find(params[:id])
+
+    return unless params[:id] != @topic.slug
+
+    redirect_to @topic, status: :moved_permanently
   end
 
   # Only allow a list of trusted parameters through.
