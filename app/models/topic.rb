@@ -4,7 +4,6 @@ require 'friendly_id_generator'
 
 class Topic < ApplicationRecord
   extend FriendlyId
-  include PgSearch::Model
   include FriendlyIdGenerator
 
   broadcasts_refreshes
@@ -22,10 +21,9 @@ class Topic < ApplicationRecord
     title_changed? || super
   end
 
-  pg_search_scope :search_by_title_x_link_and_hashtag,
-                  against: %i[title hashtag x_link user_id], using: {
-                    tsearch: { prefix: true }
-                  }
+  def self.search(query)
+    where('title ILIKE :query OR hashtag ILIKE :query OR x_link ILIKE :query', query: "%#{query}%")
+  end
 
   serialize :downvoted_user_ids, type: Array, coder: JSON
 
