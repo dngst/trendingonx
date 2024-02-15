@@ -19,7 +19,7 @@
           <%= link_to "Plugs", plug_path, class: "mr-5 py-2" %>
 
           <% if user_signed_in? %>
-            <%= render "layouts/profile_dropdown" %>
+            <%= render "shared/profile_dropdown" %>
           <% else %>
             <%= link_to "Sign in", new_user_session_path, class: "bg-black text-white rounded-full py-2 px-4" %>
           <% end %>
@@ -33,5 +33,5 @@
       </div>
     </div>
   </nav>
-  <%= render "layouts/mobile_nav" %>
+  <%= render "shared/mobile_nav" %>
 </div>

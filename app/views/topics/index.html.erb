@@ -3,10 +3,10 @@
     <%= render partial: "topic", collection: @topics, cached: true %>
     <% unless @pagy.page == @pagy.pages %>
       <%= turbo_frame_tag "topics_#{@pagy.next}", src: topics_path(page: @pagy.next), loading: "lazy" do %>
-        <%= render "layouts/loader" %>
+        <%= render "shared/loader" %>
       <% end %>
     <% end %>
   <% end %>
 <% else %>
-  <%= render 'layouts/empty_state', message: "Be the first to confirm a topic." %>
+  <%= render 'shared/empty_state', message: "Be the first to confirm a topic." %>
 <% end %>

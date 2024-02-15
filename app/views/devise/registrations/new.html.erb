@@ -11,7 +11,7 @@
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "rounded-lg w-full px-3 py-2 border border-gray-300 mt-2 focus:outline-none focus:border-black focus:ring-black" %>
       <% if resource.errors.include?(:email) %>
         <% resource.errors.full_messages_for(:email).each do |error| %>
-          <%= render "layouts/form_error", error: error %>
+          <%= render "shared/form_error", error: error %>
         <% end %>
       <% end %>
     </div>
@@ -26,7 +26,7 @@
       <%= f.password_field :password, autocomplete: "new-password", class: "rounded-lg w-full px-3 py-2 border border-gray-300 mt-2 focus:outline-none focus:border-black focus:ring-black" %>
       <% if resource.errors.include?(:password) %>
         <% resource.errors.full_messages_for(:password).each do |error| %>
-          <%= render "layouts/form_error", error: error %>
+          <%= render "shared/form_error", error: error %>
         <% end %>
       <% end %>
     </div>
@@ -38,7 +38,7 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "rounded-lg w-full px-3 py-2 border border-gray-300 mt-2 focus:outline-none focus:border-black focus:ring-black" %>
       <% if resource.errors.include?(:password_confirmation) %>
         <% resource.errors.full_messages_for(:password_confirmation).each do |error| %>
-          <%= render "layouts/form_error", error: error %>
+          <%= render "shared/form_error", error: error %>
         <% end %>
       <% end %>
     </div>
