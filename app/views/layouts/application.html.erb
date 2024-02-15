@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%= render "layouts/head" %>
+    <%= render "shared/head" %>
   </head>
 
   <body>
-    <%= render "layouts/navbar" %>
+    <%= render "shared/navbar" %>
 
-    <%= render "layouts/confirm_modal" %>
+    <%= render "shared/confirm_modal" %>
 
     <main class="container mx-auto mt-28 mb-4 px-5 flex flex-col">
-      <div class="flash" data-turbo-temporary>
-        <%= render "layouts/flash" %>
+      <div class="flash">
+        <%= render "shared/flash" %>
       </div>
 
       <%= yield %>
     </main>
-    <%= render "layouts/scroll_to_top" %>
+    <%= render "shared/scroll_to_top" %>
   </body>
 </html>

@@ -9,18 +9,18 @@
 
 <% if @topics.present? %>
   <h2 class="text-3xl mt-8 mb-2 font-semibold text-gray-800">
-    <%= render "layouts/topic_count", topics: @query %>
+    <%= render "shared/topic_count", topics: @query %>
   </h2>
   <%= turbo_frame_tag "topics_#{@pagy.page}" do %>
     <%= render partial: "topics/topic", collection: @topics, cached: true %>
     <% unless @pagy.page == @pagy.pages %>
       <%= turbo_frame_tag "topics_#{@pagy.next}", src: topics_path(page: @pagy.next), loading: "lazy" do %>
-        <%= render "layouts/loader" %>
+        <%= render "shared/loader" %>
       <% end %>
     <% end %>
   <% end %>
 <% else %>
   <% if current_user == @user %>
-    <%= render 'layouts/empty_state', message: "You haven't created any topics yet." %>
+    <%= render 'shared/empty_state', message: "You haven't created any topics yet." %>
   <% end %>
 <% end %>

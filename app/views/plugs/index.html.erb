@@ -5,5 +5,5 @@
 <% if @plugs.present? %>
   <%= render partial: "plug", collection: @plugs, cached: true %>
 <% else %>
-  <%= render 'layouts/empty_state', message: "Users with the most confirmed topics will be listed here." %>
+  <%= render 'shared/empty_state', message: "Users with the most confirmed topics will be listed here." %>
 <% end %>
