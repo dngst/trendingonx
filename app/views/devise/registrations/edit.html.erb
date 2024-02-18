@@ -11,11 +11,7 @@
           Email <span class="text-red-500">*</span>
         <% end %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "rounded-lg block border border-gray-300 focus:outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
-        <% if resource.errors.include?(:email) %>
-          <% resource.errors.full_messages_for(:email).each do |error| %>
-            <p class="text-red-500 mt-2"><%= error %></p>
-          <% end %>
-        <% end %>
+        <%= render "devise/shared/form_error", field: :email %>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -28,11 +24,7 @@
         <%= f.label :password, class: "text-gray-800" %>
         <i class="text-gray-600">(leave blank if you don't want to change it)</i>
         <%= f.password_field :password, autocomplete: "new-password", class: "rounded-lg block border border-gray-300 focus:outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
-        <% if resource.errors.include?(:password) %>
-          <% resource.errors.full_messages_for(:password).each do |error| %>
-            <p class="text-red-500 mt-2"><%= error %></p>
-          <% end %>
-        <% end %>
+       <%= render "devise/shared/form_error", field: :password %>
         <% if @minimum_password_length %>
           <div class="text-gray-600">
             <%= @minimum_password_length %> characters minimum
@@ -43,11 +35,7 @@
       <div class="mb-4">
         <%= f.label :password_confirmation, class: "text-gray-800" %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "rounded-lg block border border-gray-300 focus:outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
-        <% if resource.errors.include?(:password_confirmation) %>
-          <% resource.errors.full_messages_for(:password_confirmation).each do |error| %>
-            <p class="text-red-500 mt-2"><%= error %></p>
-          <% end %>
-        <% end %>
+        <%= render "devise/shared/form_error", field: :password_confirmation %>
       </div>
 
       <div class="mb-4">
@@ -56,11 +44,7 @@
         <% end %>
         <i class="text-gray-600">(we need your current password to confirm your changes)</i>
         <%= f.password_field :current_password, autocomplete: "current-password", class: "rounded-lg block border border-gray-300 focus:outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
-        <% if resource.errors.include?(:current_password) %>
-          <% resource.errors.full_messages_for(:current_password).each do |error| %>
-            <p class="text-red-500 mt-2"><%= error %></p>
-          <% end %>
-        <% end %>
+        <%= render "devise/shared/form_error", field: :current_password %>
       </div>
 
       <div class="mb-4">
