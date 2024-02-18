@@ -55,6 +55,7 @@ group :development, :test do
   gem 'bundler-audit'
   gem 'debug', platforms: %i[mri windows]
   gem 'factory_bot_rails'
+  gem 'faker', '~> 3.2'
   gem 'rspec-rails', '~> 6.1.0'
 end
 
@@ -63,9 +64,8 @@ group :development do
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  gem 'rack-mini-profiler'
-
   gem 'annotate'
+  gem 'rack-mini-profiler'
   gem 'rubocop-factory_bot', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
@@ -83,7 +83,5 @@ gem 'devise', '~> 4.9'
 gem 'friendly_id', '~> 5.5'
 
 gem 'httparty', '~> 0.21.0'
-
-gem 'faker', '~> 3.2'
 
 gem 'pagy', '~> 6.4'
