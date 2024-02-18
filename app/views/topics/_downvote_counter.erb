@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "topic_#{topic.id}_downvote_counter" do %>
   <%= button_to downvote_topic_path(topic), method: :post, class: "py-2 px-0 mr-1" do %>
-    <div class="flex downvote-container items-center">
+    <div class="flex items-center">
       <% cache("bx-downvote.svg") do %>
         <%= image_tag "bx-downvote.svg", alt: "Downvote", draggable: false %>
       <% end %>

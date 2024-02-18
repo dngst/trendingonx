@@ -6,70 +6,46 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: %i[show edit update destroy downvote]
   before_action :authenticate_user!, only: %i[new downvote]
 
-  # GET /topics or /topics.json
   def index
-    ids = Rails.cache.fetch('topic_ids') do
-      Topic.pluck(:id)
-    end
-    @pagy, @topics = pagy(Topic.where(id: ids).order(created_at: :desc))
+    @pagy, @topics = pagy(Topic.where(id: topic_ids).order(created_at: :desc))
   end
 
-  # GET /topics/1 or /topics/1.json
   def show; end
 
-  # GET /topics/new
   def new
     @topic = Topic.new
     @autofocus = true
   end
 
-  # GET /topics/1/edit
   def edit
     @autofocus = false
   end
 
-  # POST /topics or /topics.json
   def create
     @topic = Topic.new(topic_params)
-
-    respond_to do |format|
-      if @topic.save
-        Rails.cache.delete('topic_ids')
-        format.html { redirect_to @topic, notice: t('topics.saved') }
-        format.json { render :show, status: :created, location: @topic }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @topic.errors, status: :unprocessable_entity }
-      end
+    if @topic.save
+      clear_cache
+      redirect_to @topic, notice: t('topics.saved')
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /topics/1 or /topics/1.json
   def update
-    respond_to do |format|
-      if @topic.update(topic_params)
-        format.html { redirect_to topic_url(@topic), notice: t('topics.updated') }
-        format.json { render :show, status: :ok, location: @topic }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @topic.errors, status: :unprocessable_entity }
-      end
+    if @topic.update(topic_params)
+      redirect_to topic_url(@topic), notice: t('topics.updated')
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /topics/1 or /topics/1.json
   def destroy
     @topic.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to topics_url, notice: t('topics.deleted') }
-      format.json { head :no_content }
-    end
+    redirect_to topics_url, notice: t('topics.deleted')
   end
 
   def downvote
     @topic.downvote!(current_user)
-
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
@@ -85,17 +61,24 @@ class TopicsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_topic
     @topic = Topic.friendly.find(params[:id])
-
     return unless params[:id] != @topic.slug
 
     redirect_to @topic, status: :moved_permanently
   end
 
-  # Only allow a list of trusted parameters through.
   def topic_params
     params.require(:topic).permit(:title, :x_link, :hashtag, :user_id)
+  end
+
+  def topic_ids
+    Rails.cache.fetch('topic_ids') do
+      Topic.pluck(:id)
+    end
+  end
+
+  def clear_cache
+    Rails.cache.delete('topic_ids')
   end
 end

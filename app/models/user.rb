@@ -6,14 +6,12 @@ class User < ApplicationRecord
   broadcasts_refreshes
 
   has_many :topics, dependent: :destroy
-  validates :username, presence: true, uniqueness: true
 
   before_validation :generate_username, on: :create
+  validates :username, presence: true, uniqueness: true
 
   friendly_id :username, use: :slugged
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

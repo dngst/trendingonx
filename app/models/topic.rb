@@ -18,7 +18,7 @@ class Topic < ApplicationRecord
   friendly_id :title, use: %i[slugged history], slug_generator_class: ReusableSlugGenerator
 
   def should_generate_new_friendly_id?
-    title_changed? || super
+    title_changed?
   end
 
   def self.search(query)
