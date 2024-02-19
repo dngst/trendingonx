@@ -3,9 +3,9 @@
 class User < ApplicationRecord
   extend FriendlyId
 
-  broadcasts_refreshes
-
   has_many :topics, dependent: :destroy
+
+  broadcasts_refreshes
 
   before_validation :generate_username, on: :create
   validates :username, presence: true, uniqueness: true

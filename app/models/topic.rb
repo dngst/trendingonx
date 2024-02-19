@@ -6,9 +6,9 @@ class Topic < ApplicationRecord
   extend FriendlyId
   include FriendlyIdGenerator
 
-  broadcasts_refreshes
+  belongs_to :user, touch: true
 
-  belongs_to :user
+  broadcasts_refreshes
 
   before_validation :remove_query_string
   validates :title, :hashtag, :x_link, presence: true
