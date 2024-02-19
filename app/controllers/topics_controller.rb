@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   before_action :authenticate_user!, only: %i[new downvote]
 
   def index
-    @pagy, @topics = pagy(Topic.where(id: topic_ids).order(created_at: :desc))
+    @pagy, @topics = pagy(Topic.includes(:user).where(id: topic_ids).order(created_at: :desc))
   end
 
   def show; end
@@ -62,7 +62,7 @@ class TopicsController < ApplicationController
   private
 
   def set_topic
-    @topic = Topic.friendly.find(params[:id])
+    @topic = Topic.includes(:user).friendly.find(params[:id])
     return unless params[:id] != @topic.slug
 
     redirect_to @topic, status: :moved_permanently
