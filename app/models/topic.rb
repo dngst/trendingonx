@@ -8,12 +8,13 @@ class Topic < ApplicationRecord
 
   belongs_to :user, touch: true
 
-  broadcasts_refreshes
-
-  before_validation :remove_query_string
   validates :title, :hashtag, :x_link, presence: true
   validates :hashtag, format: { without: /\A#/, message: I18n.t('topics.validations.hashtag') }
   validates_with TweetUrlValidator, fields: [:x_link]
+
+  before_validation :remove_query_string
+
+  broadcasts_refreshes
 
   friendly_id :title, use: %i[slugged history], slug_generator_class: ReusableSlugGenerator
 

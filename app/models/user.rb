@@ -3,17 +3,18 @@
 class User < ApplicationRecord
   extend FriendlyId
 
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
   has_many :topics, dependent: :destroy
+
+  validates :username, presence: true, uniqueness: true
+
+  before_validation :generate_username, on: :create
 
   broadcasts_refreshes
 
-  before_validation :generate_username, on: :create
-  validates :username, presence: true, uniqueness: true
-
   friendly_id :username, use: :slugged
-
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
 
   def self.top_users(limit, min_topic_count)
     joins(:topics)
