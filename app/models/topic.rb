@@ -6,19 +6,20 @@ class Topic < ApplicationRecord
   extend FriendlyId
   include FriendlyIdGenerator
 
-  broadcasts_refreshes
+  belongs_to :user, touch: true
 
-  belongs_to :user
-
-  before_validation :remove_query_string
   validates :title, :hashtag, :x_link, presence: true
   validates :hashtag, format: { without: /\A#/, message: I18n.t('topics.validations.hashtag') }
   validates_with TweetUrlValidator, fields: [:x_link]
 
+  before_validation :remove_query_string
+
+  broadcasts_refreshes
+
   friendly_id :title, use: %i[slugged history], slug_generator_class: ReusableSlugGenerator
 
   def should_generate_new_friendly_id?
-    title_changed? || super
+    title_changed?
   end
 
   def self.search(query)

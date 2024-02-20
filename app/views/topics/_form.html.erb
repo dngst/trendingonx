@@ -4,11 +4,7 @@
       Title <span class="text-red-500">*</span>
     <% end %>
     <%= form.text_field :title, placeholder: "Topic title", autofocus: @autofocus, class: "rounded-lg block border border-gray-300 focus:outline-none focus:border-black focus:ring-black px-3 py-2 mt-2 w-full" %>
-    <% if topic.errors.include?(:title) %>
-      <% topic.errors.full_messages_for(:title).each do |error| %>
-        <%= render "shared/form_error", error: error %>
-      <% end %>
-    <% end %>
+    <%= render "shared/form_error", topic: topic, field: :title %>
   </div>
 
   <div class="my-5">
@@ -16,11 +12,7 @@
       X link <span class="text-red-500">*</span>
     <% end %>
     <%= form.text_field :x_link, placeholder: "Link to relevant X post", class: "rounded-lg block border border-gray-300 focus:border-black focus:ring-black focus:outline-none px-3 py-2 mt-2 w-full" %>
-    <% if topic.errors.include?(:x_link) %>
-      <% topic.errors.full_messages_for(:x_link).each do |error| %>
-        <%= render "shared/form_error", error: error %>
-      <% end %>
-    <% end %>
+    <%= render "shared/form_error", topic: topic, field: :x_link %>
   </div>
 
   <div class="my-5">
@@ -28,11 +20,7 @@
       Hashtag <span class="text-red-500">*</span>
     <% end %>
     <%= form.text_field :hashtag, placeholder: "Hashtag without '#'", class: "rounded-lg block border border-gray-300 focus:border-black focus:ring-black focus:outline-none px-3 py-2 mt-2 w-full" %>
-    <% if topic.errors.include?(:hashtag) %>
-      <% topic.errors.full_messages_for(:hashtag).each do |error| %>
-        <%= render "shared/form_error", error: error %>
-      <% end %>
-    <% end %>
+    <%= render "shared/form_error", topic: topic, field: :hashtag %>
   </div>
 
   <%= form.hidden_field :user_id, value: current_user.id %>

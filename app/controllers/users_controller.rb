@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = User.friendly.find(params[:id])
-    @query = Topic.where(user_id: @user.id).order(created_at: :desc)
+    @query = Topic.includes(:user).where(user_id: @user.id).order(created_at: :desc)
     @pagy, @topics = pagy(@query)
   end
 end

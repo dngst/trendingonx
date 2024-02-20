@@ -1,1 +1,6 @@
-<p class="text-red-500 mt-2"><%= error %></p>
+<% if topic.errors.include?(field) %>
+  <% topic.errors.full_messages_for(field).each do |error| %>
+   <p class="text-red-500 mt-2"><%= error %></p>
+  <% end %>
+<% end %>
+
