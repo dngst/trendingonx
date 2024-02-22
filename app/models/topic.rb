@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'friendly_id_generator'
-
 class Topic < ApplicationRecord
   extend FriendlyId
   include FriendlyIdGenerator
